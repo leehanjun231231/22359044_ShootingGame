@@ -6,6 +6,7 @@ public class Monster : MonoBehaviour
 {
     public float spd = 1.0f;
     public GameObject target;
+    public GameObject bullet;
     Vector3 direct = Vector3.down;
 
 
@@ -35,6 +36,4 @@ public class Monster : MonoBehaviour
         Destroy(collision.gameObject);
         Destroy(gameObject);
     }
-
-
 }
