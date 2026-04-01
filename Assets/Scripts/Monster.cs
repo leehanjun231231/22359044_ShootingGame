@@ -9,6 +9,8 @@ public class Monster : MonoBehaviour
     public GameObject bullet;
     Vector3 direct = Vector3.down;
 
+    public GameObject prefabsExplosion;
+
 
     private void Start()
     {
@@ -36,6 +38,10 @@ public class Monster : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
+        GameObject explosionObj = Instantiate(prefabsExplosion);
+        explosionObj.transform.position = transform.position;
+
 
         Destroy(collision.gameObject);
         Destroy(gameObject);
