@@ -5,7 +5,7 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     public float spd = 1.0f;
-    public GameObject target;
+    GameObject target;
     public GameObject bullet;
     Vector3 direct = Vector3.down;
 
@@ -16,7 +16,10 @@ public class Monster : MonoBehaviour
 
         if (rndNum % 3 == 0)
         {
-            GameObject target = GameObject.Find("Character");
+
+            target = GameObject.Find("Character");
+
+            if (target == null) return;
 
             direct = target.transform.position - transform.position;
 
@@ -33,7 +36,9 @@ public class Monster : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
         Destroy(collision.gameObject);
         Destroy(gameObject);
+
     }
 }
