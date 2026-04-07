@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spd: 5
   bullet: {fileID: 3154439421670164066, guid: 06d7773629d7caf44903abbb1b4eef35, type: 3}
-  prefabsExplosion: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
+  prefabsExplosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
 --- !u!1001 &4013379657143647666
 PrefabInstance:
   m_ObjectHideFlags: 0
