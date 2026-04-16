@@ -51,9 +51,8 @@ public class Monster : MonoBehaviour
 
             if (scoreManager.nowScore > scoreManager.bestScore)
             {
-                PlayerPrefs.SetInt("bestscore", scoreManager.bestScore);
-
                 scoreManager.bestScore = scoreManager.nowScore;
+                PlayerPrefs.SetInt("bestscore", scoreManager.bestScore);
                 scoreManager.bestScoreUI.text = "Best Score : " + scoreManager.bestScore;
             }
 
