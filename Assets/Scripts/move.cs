@@ -23,4 +23,18 @@ public class move : MonoBehaviour
         transform.position = transform.position + direct * spd * Time.deltaTime;
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+
+        if (collision.gameObject.tag == "Monster")
+        {
+
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+
+    }
+
 }
