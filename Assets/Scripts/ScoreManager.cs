@@ -18,4 +18,15 @@ public class ScoreManager : MonoBehaviour
 
     }
 
+    public void ResetScore()
+    {
+        PlayerPrefs.SetInt("bestscore", 0);
+
+        bestScore = 0;
+        bestScoreUI.text = "Best Score : " + bestScore;
+        nowScore = 0;
+
+        nowScoreUI.text = "Now Score : 0";
+    }
+
 }
