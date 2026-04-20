@@ -7,6 +7,7 @@ public class bulletFire : MonoBehaviour
     public GameObject bulletObject;
     public GameObject bulletFireObject;
 
+    public AudioSource Reload_Audio;
     public int maxBullet = 10;
     private int currentBullet;
     public float reloadTime = 2.0f;
@@ -29,6 +30,7 @@ public class bulletFire : MonoBehaviour
                 currentBullet = maxBullet;
                 isReloading = false;
                 reloadTimer = 0.0f;
+                Reload_Audio.Stop();
             }
         }
 
@@ -39,8 +41,9 @@ public class bulletFire : MonoBehaviour
             currentBullet--;
         }
 
-        if (currentBullet <= 0)
+        if (currentBullet <= 0 && !isReloading)
         {
+            Reload_Audio.Play();
             isReloading = true;
         }
 
