@@ -6,6 +6,7 @@ public class PauseManager : MonoBehaviour
     public static bool isAutoStart = false;
     private bool isPaused = false;
     public GameObject pauseUI;
+    public AudioSource Button_Audio;
 
 
     void Start()
@@ -54,4 +55,10 @@ public class PauseManager : MonoBehaviour
 
         }
     }
+
+    public void PlayClickSound()
+    {
+        Button_Audio.Play();
+    }
+
 }
