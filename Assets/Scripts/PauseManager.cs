@@ -1,8 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
     private bool isPaused = false;
+    public GameObject pauseUI;
+
+
+    void Start()
+    {
+        Time.timeScale = 0f;
+        isPaused = true;
+        pauseUI.SetActive(true);
+    }
 
     void Update()
     {
@@ -10,6 +20,14 @@ public class PauseManager : MonoBehaviour
         {
             TogglePause();
         }
+    }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+        pauseUI.SetActive(false);
+
     }
 
     public void TogglePause()
