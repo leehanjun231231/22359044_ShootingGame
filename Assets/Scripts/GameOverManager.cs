@@ -21,4 +21,10 @@ public class GameOverManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void Menu()
+    {
+        PauseManager.isAutoStart = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 }
