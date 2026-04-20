@@ -10,7 +10,7 @@ public class GameOverManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         gameOverUI.SetActive(true);
-        bgmSource.volume = 0.1f;
+        bgmSource.volume = 0.09f;
 
     }
 

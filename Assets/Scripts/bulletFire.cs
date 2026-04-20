@@ -8,6 +8,7 @@ public class bulletFire : MonoBehaviour
     public GameObject bulletFireObject;
 
     public AudioSource Reload_Audio;
+    public AudioSource ReloadMan_Audio;
     public int maxBullet = 10;
     private int currentBullet;
     public float reloadTime = 2.0f;
@@ -44,6 +45,7 @@ public class bulletFire : MonoBehaviour
         if (currentBullet <= 0 && !isReloading)
         {
             Reload_Audio.Play();
+            ReloadMan_Audio.Play();
             isReloading = true;
         }
 
