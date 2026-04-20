@@ -15,6 +15,7 @@ public class GameOverManager : MonoBehaviour
 
     public void RestartGame()
     {
+        PauseManager.isAutoStart = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

@@ -3,15 +3,25 @@ using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
+    public static bool isAutoStart = false;
     private bool isPaused = false;
     public GameObject pauseUI;
 
 
     void Start()
     {
-        Time.timeScale = 0f;
-        isPaused = true;
-        pauseUI.SetActive(true);
+        if (isAutoStart)
+        {
+            StartGame();
+            isAutoStart = false;
+        }
+        else
+        {
+            Time.timeScale = 0f;
+            isPaused = true;
+            pauseUI.SetActive(true);
+        }
+
     }
 
     void Update()
