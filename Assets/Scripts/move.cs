@@ -31,6 +31,9 @@ public class move : MonoBehaviour
         if (collision.gameObject.tag == "Monster")
         {
 
+            GameObject gameManager = GameObject.Find("GameManager");
+            gameManager.GetComponent<GameOverManager>().ShowGameOver();
+
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
