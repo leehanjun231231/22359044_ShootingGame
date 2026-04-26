@@ -10,13 +10,14 @@ public class GameOverManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         gameOverUI.SetActive(true);
-        bgmSource.volume = 0.09f;
+        bgmSource.volume = 0.009f;
 
     }
 
 
     public void RestartGame()
     {
+        Time.timeScale = 1f;
         PauseManager.isAutoStart = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

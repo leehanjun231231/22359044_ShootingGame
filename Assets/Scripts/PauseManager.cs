@@ -8,12 +8,16 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseUI;
     public AudioSource Button_Audio;
 
+    public Transform spawnPoint;
+    public GameObject playerPrefab;
+
 
     void Start()
     {
         if (isAutoStart)
         {
             StartGame();
+            SpawnPlayer();
             isAutoStart = false;
         }
         else
@@ -35,6 +39,7 @@ public class PauseManager : MonoBehaviour
 
     public void StartGame()
     {
+
         Time.timeScale = 1f;
         isPaused = false;
         pauseUI.SetActive(false);
@@ -59,6 +64,14 @@ public class PauseManager : MonoBehaviour
     public void PlayClickSound()
     {
         Button_Audio.Play();
+    }
+
+    public void SpawnPlayer()
+    {
+        if (playerPrefab != null)
+        {
+            Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
+        }
     }
 
 }

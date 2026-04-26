@@ -7,7 +7,6 @@ public class bulletFire : MonoBehaviour
     public GameObject bulletFireObject;
 
     public AudioSource Reload_Audio;
-    public AudioSource ReloadMan_Audio;
     public int maxBullet = 10;
     private int currentBullet;
     public float reloadTime = 2.0f;
@@ -19,6 +18,11 @@ public class bulletFire : MonoBehaviour
 
     void Start()
     {
+        GameObject sliderObj = GameObject.Find("BulletSlider");
+        if (sliderObj != null)
+        {
+            reloadSlider = sliderObj.GetComponent<Slider>();
+        }
         currentBullet = maxBullet;
     }
 
@@ -38,6 +42,7 @@ public class bulletFire : MonoBehaviour
                 reloadTimer = 0.0f;
                 Reload_Audio.Stop();
                 UpdateBulletSlider();
+
             }
         }
 
@@ -53,7 +58,6 @@ public class bulletFire : MonoBehaviour
         if (currentBullet <= 0 && !isReloading)
         {
             Reload_Audio.Play();
-            ReloadMan_Audio.Play();
             isReloading = true;
         }
 
@@ -67,6 +71,15 @@ public class bulletFire : MonoBehaviour
         if (reloadSlider != null)
         {
             reloadSlider.value = (float)currentBullet / (float)maxBullet;
+        }
+    }
+
+    private void OnDestroy()
+    {
+
+        if (reloadSlider != null)
+        {
+            reloadSlider.gameObject.SetActive(false);
         }
     }
 
