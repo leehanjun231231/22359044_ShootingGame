@@ -29,6 +29,8 @@ public class bulletFire : MonoBehaviour
         {
             reloadTimer += Time.deltaTime;
 
+            reloadSlider.value = reloadTimer / reloadTime;
+
             if (reloadTimer >= reloadTime)
             {
                 currentBullet = maxBullet;
