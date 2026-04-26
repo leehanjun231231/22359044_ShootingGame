@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class bulletFire : MonoBehaviour
 {
@@ -14,6 +13,9 @@ public class bulletFire : MonoBehaviour
     public float reloadTime = 2.0f;
     private float reloadTimer = 0.0f;
     private bool isReloading = false;
+    public float sliderPos = 10f;
+
+    public Slider reloadSlider;
 
     void Start()
     {
@@ -26,12 +28,14 @@ public class bulletFire : MonoBehaviour
         if (isReloading)
         {
             reloadTimer += Time.deltaTime;
+
             if (reloadTimer >= reloadTime)
             {
                 currentBullet = maxBullet;
                 isReloading = false;
                 reloadTimer = 0.0f;
                 Reload_Audio.Stop();
+                UpdateBulletSlider();
             }
         }
 
@@ -40,6 +44,8 @@ public class bulletFire : MonoBehaviour
             GameObject bullet = Instantiate(bulletObject);
             bullet.transform.position = bulletFireObject.transform.position;
             currentBullet--;
+
+            UpdateBulletSlider();
         }
 
         if (currentBullet <= 0 && !isReloading)
@@ -49,7 +55,17 @@ public class bulletFire : MonoBehaviour
             isReloading = true;
         }
 
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(bulletFireObject.transform.position);
+        reloadSlider.transform.position = screenPos + new Vector3(5, sliderPos, 0);
     }
 
+
+    void UpdateBulletSlider()
+    {
+        if (reloadSlider != null)
+        {
+            reloadSlider.value = (float)currentBullet / (float)maxBullet;
+        }
+    }
 
 }
