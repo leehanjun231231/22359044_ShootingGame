@@ -75,7 +75,30 @@ public class PlayerInventory : MonoBehaviour
 
     public void MoveItem(List<InventoryItem> fromList, int fromIndex, List<InventoryItem> toList, int toIndex)
     {
-        // from 슬롯과 to 슬롯의 아이템을 서로 바꾸기 (Swap)
+        InventoryItem fromItem = fromList[fromIndex];
+        InventoryItem toItem = toList[toIndex];
+
+        // 가방 인벤에서 장착 인벤으로 이동할 때 아이템 타입 검사 실행
+        if (toList == equipItems && fromItem != null && fromItem.data != null)
+        {
+            if (fromItem.data.itemType == ItemType.Consumable || fromItem.data.itemType == ItemType.Etc)
+            {
+                Debug.Log("무기나 방어구만 장착할 수 있습니다.");
+                return; // 교환 취소
+            }
+        }
+
+        // 장착 인벤에 있는 아이템과 가방의 아이템을 서로 바꿀 때 아이템 타입 검사 실행
+        if (fromList == equipItems && toItem != null && toItem.data != null)
+        {
+            if (toItem.data.itemType == ItemType.Consumable || toItem.data.itemType == ItemType.Etc)
+            {
+                Debug.Log("장착할 수 없는 아이템과 교체할 수 없습니다.");
+                return; // 교환 취소
+            }
+        }
+
+        // 조건 검사를 모두 통과했다면 정상적으로 아이템 교환
         InventoryItem temp = fromList[fromIndex];
         fromList[fromIndex] = toList[toIndex];
         toList[toIndex] = temp;
