@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler
 {
     public Image iconImage;
     public TMP_Text countText;
@@ -48,7 +48,7 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             return;
         }
 
-        // 원래 위치 저장 및 아이콘 raycast 끄기 (드랍되는 슬롯을 인식하기 위해)
+        // 원래 위치 저장 및 아이콘 raycast 끄기
         originalIconPosition = iconImage.rectTransform.anchoredPosition;
         iconImage.raycastTarget = false;
     }
@@ -81,4 +81,32 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             }
         }
     }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        // 마우스 우클릭을 감지
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            InventoryItem item = itemList[index];
+
+            // 인벤에 아이템이 있고, 그게 소모품 아이템이라면?
+            if (item != null && item.data != null && item.data.itemType == ItemType.Consumable)
+            {
+                Debug.Log(item.data.itemName + " 아이템을 사용했습니다.");
+
+                // 아이템 개수 1개 감소
+                item.count--;
+
+                // 개수가 0이 되면 슬롯 비우기
+                if (item.count <= 0)
+                {
+                    itemList[index] = null;
+                }
+
+                // UI 새로고침 하여 정보 최신화
+                inventoryUI.Refresh();
+            }
+        }
+    }
+
 }
