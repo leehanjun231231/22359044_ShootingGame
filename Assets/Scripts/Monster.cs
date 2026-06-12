@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,11 +38,8 @@ public class Monster : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
-
         if (collision.gameObject.tag == "Bullet")
         {
-
             GameObject gameManager = GameObject.Find("GameManager");
             ScoreManager scoreManager = gameManager.GetComponent<ScoreManager>();
 
@@ -59,10 +56,15 @@ public class Monster : MonoBehaviour
             GameObject explosionObj = Instantiate(prefabsExplosion);
             explosionObj.transform.position = transform.position;
 
+            // 죽기 직전에 아이템 드랍 실행
+            MonsterDropper dropper = GetComponent<MonsterDropper>();
+            if (dropper != null)
+            {
+                dropper.Drop();
+            }
 
             Destroy(collision.gameObject);
-            Destroy(gameObject);
+            Destroy(gameObject); //몬스터 파괴
         }
-
     }
 }

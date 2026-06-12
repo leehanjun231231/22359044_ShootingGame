@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7045364649544031881}
   - component: {fileID: 7045364649544031886}
   - component: {fileID: 7045364649544031887}
+  - component: {fileID: 3777043371451963082}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -238,6 +239,52 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 1
+--- !u!114 &3777043371451963082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7045364649544031894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfadb592cb1e773448e7938842d60ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bagSlotCount: 12
+  equipSlotCount: 3
+  bagItems:
+  - data: {fileID: 0}
+    count: 0
+  - data: {fileID: 0}
+    count: 0
+  - data: {fileID: 0}
+    count: 0
+  - data: {fileID: 0}
+    count: 0
+  - data: {fileID: 0}
+    count: 0
+  - data: {fileID: 0}
+    count: 0
+  - data: {fileID: 0}
+    count: 0
+  - data: {fileID: 0}
+    count: 0
+  - data: {fileID: 0}
+    count: 0
+  - data: {fileID: 0}
+    count: 0
+  - data: {fileID: 0}
+    count: 0
+  - data: {fileID: 0}
+    count: 0
+  equipItems:
+  - data: {fileID: 0}
+    count: 0
+  - data: {fileID: 0}
+    count: 0
+  - data: {fileID: 0}
+    count: 0
 --- !u!1 &7045364650217141258
 GameObject:
   m_ObjectHideFlags: 0
